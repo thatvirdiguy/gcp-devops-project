@@ -6,8 +6,8 @@ steps:
 - name: "gcr.io/cloud-builders/docker"
   args: ['push', 'gcr.io/$PROJECT_ID/gcpdevops']
   # deploy container image to GKE
-- name: "gcr.io/cloud-builders/alpine"
-  entrypoint: 'sh'
+- name: "ubuntu"
+  entrypoint: 'bash'
   args:
     - '-c'
     - |
