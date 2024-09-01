@@ -14,9 +14,14 @@ spec:
     spec:
       containers:
       - name: gcp-devops-gke
-        image: gcr.io/kodekloud-gcp-training/test-gcpdevops:latest
+        image: gcr.io/$(IMAGE_REGISTRY)/test-gcpdevops:latest
         ports:
         - containerPort: 5000
         env:
           - name: PORT
             value: "5000"
+          - name: IMAGE_REGISTRY
+            valueFrom:
+              secretKeyRef:
+                name: image-registry-secret
+                key: registry
