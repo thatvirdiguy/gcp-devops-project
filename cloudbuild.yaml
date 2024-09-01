@@ -6,10 +6,9 @@ steps:
 - name: "gcr.io/cloud-builders/docker"
   args: ['push', 'gcr.io/$PROJECT_ID/gcpdevops']
   # deploy container image to GKE
-- name: "gcr.io/cloud-builders/bash"
-  args:
-  - '-c'
-  - |
+- name: "bash"
+  script: |
+    #!/usr/bin/env bash
     sed -i "s#<replace>#$PROJECT_ID#g gke.yaml"
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
